@@ -1,0 +1,194 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	line-height: 1.65;
+	color: #16343F;         /*สีตัวอักษรที่แสดงผลในส่วนของเนื้อหาเว็บ*/
+	background: #EAF6FC;    /*สีพื้นหลังของตัวเว็บ - ฟ้าอ่อนโทนท้องฟ้า*/
+}
+header, footer {
+	padding: 1rem;
+	color: #ffffff;
+	background: #0F5C73;        /*สีพื้นหลังของส่วนหัวเว็บและท้ายเว็บ - ฟ้าเข้มโทนทะเล*/
+	border-bottom: 4px solid #F2795A;   /*เส้นคาดสีส้มโทนพระอาทิตย์ตก ให้ตัดกับฟ้าทะเล*/
+}
+footer {
+	border-bottom: none;
+	border-top: 4px solid #F2795A;
+	margin-top: 2rem;
+}
+.site-name {
+	margin: 0 0 0.5rem;
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+nav a {
+	display: block;
+	padding: 0.35rem 0.75rem;
+	color: #ffffff;         /*สีตัวอักษรบนเมนู*/
+	border-radius: 0.35rem;
+	text-decoration: none;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+nav a:hover, nav a[aria-current="page"] {
+	background: #7FC8A9;    /*พื้นหลังของเมนูเมื่อเอาเมาส์ไปวางชี้ - เขียวมินต์ ตัดกับฟ้า-ส้ม*/
+	color: #0B3C5D;
+}
+a:focus-visible {
+	outline: 3px solid #F2795A;
+	outline-offset: 3px;
+}
+main {
+	width: min(92%, 56rem);
+	margin: 2rem auto;
+}
+h1, h2 {
+	color: #0F5C73;
+}
+.card {
+	margin: 1rem 0;
+	padding: 1rem;
+	border: 1px solid #BFE3D3;
+	border-left: 4px solid #7FC8A9;    /*แถบสีเขียวมินต์ด้านซ้าย ให้การ์ดมีจุดเด่น*/
+	border-radius: 0.75rem;
+	background: #FFF6E9;    /*สีพื้นหลังของกรอบ card - ครีมทรายอุ่น ตัดกับพื้นหลังฟ้า*/
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+}
+.button {
+	display: inline-block;
+	padding: 0.6rem 1rem;
+	border-radius: 0.35rem;
+	background: #F2795A;    /*สีของปุ่ม - ส้มโทนพระอาทิตย์ตก*/
+	color: #ffffff;
+	text-decoration: none;
+	transition: background 0.15s ease;
+}
+.button:hover {
+	background: #D35940;
+}
+
+.slideshow-heading {
+	text-align: center;
+	margin: 1.5rem 0 1rem;
+}
+.slideshow-wrap {
+	margin: 0 0 1.5rem;
+}
+.slideshow {
+	position: relative;
+	overflow: hidden;
+	border-radius: 0.75rem;
+	aspect-ratio: 16 / 6;
+	background: #0F5C73;
+}
+.slides {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.slides .slide {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	margin: 0;
+	border-radius: 0;
+	opacity: 0;
+}
+
+/* สไลด์โชว์ 5 ภาพ (หน้าแรก) : วนครบรอบทุก 20 วินาที ภาพละ 4 วินาที ไม่มีการซูมภาพ */
+.slideshow-wrap--five .slides .slide {
+	animation: slideshow-fade-5 20s infinite;
+}
+.slideshow-wrap--five .slides .slide:nth-child(1) { animation-delay: 0s; }
+.slideshow-wrap--five .slides .slide:nth-child(2) { animation-delay: 4s; }
+.slideshow-wrap--five .slides .slide:nth-child(3) { animation-delay: 8s; }
+.slideshow-wrap--five .slides .slide:nth-child(4) { animation-delay: 12s; }
+.slideshow-wrap--five .slides .slide:nth-child(5) { animation-delay: 16s; }
+@keyframes slideshow-fade-5 {
+	0%   { opacity: 0; }
+	3%   { opacity: 1; }
+	17%  { opacity: 1; }
+	20%  { opacity: 0; }
+	100% { opacity: 0; }
+}
+.slideshow-wrap--five .slide-dots span {
+	animation: slideshow-dot-5 20s infinite;
+}
+.slideshow-wrap--five .slide-dots span:nth-child(1) { animation-delay: 0s; }
+.slideshow-wrap--five .slide-dots span:nth-child(2) { animation-delay: 4s; }
+.slideshow-wrap--five .slide-dots span:nth-child(3) { animation-delay: 8s; }
+.slideshow-wrap--five .slide-dots span:nth-child(4) { animation-delay: 12s; }
+.slideshow-wrap--five .slide-dots span:nth-child(5) { animation-delay: 16s; }
+@keyframes slideshow-dot-5 {
+	0%   { width: 0.6rem; background: #BFE3D3; }
+	3%   { width: 1.6rem; background: #F2795A; }
+	17%  { width: 1.6rem; background: #F2795A; }
+	20%  { width: 0.6rem; background: #BFE3D3; }
+	100% { width: 0.6rem; background: #BFE3D3; }
+}
+
+/* สไลด์โชว์ 2 ภาพ (การ์ดเขาช่องกระจก) : วนครบรอบทุก 8 วินาที ภาพละ 4 วินาที ไม่มีการซูมภาพ */
+.slideshow-wrap--two .slides .slide {
+	animation: slideshow-fade-2 8s infinite;
+}
+.slideshow-wrap--two .slides .slide:nth-child(1) { animation-delay: 0s; }
+.slideshow-wrap--two .slides .slide:nth-child(2) { animation-delay: 4s; }
+@keyframes slideshow-fade-2 {
+	0%    { opacity: 0; }
+	7%    { opacity: 1; }
+	43%   { opacity: 1; }
+	50%   { opacity: 0; }
+	100%  { opacity: 0; }
+}
+.slideshow-wrap--two .slide-dots span {
+	animation: slideshow-dot-2 8s infinite;
+}
+.slideshow-wrap--two .slide-dots span:nth-child(1) { animation-delay: 0s; }
+.slideshow-wrap--two .slide-dots span:nth-child(2) { animation-delay: 4s; }
+@keyframes slideshow-dot-2 {
+	0%    { width: 0.6rem; background: #BFE3D3; }
+	7%    { width: 1.6rem; background: #F2795A; }
+	43%   { width: 1.6rem; background: #F2795A; }
+	50%   { width: 0.6rem; background: #BFE3D3; }
+	100%  { width: 0.6rem; background: #BFE3D3; }
+}
+
+.slide-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.45rem;
+	margin: 0.75rem 0 0;
+	padding: 0;
+}
+.slide-dots span {
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 999px;
+	background: #BFE3D3;    /*จุดที่ยังไม่ได้เลือก - เขียวมินต์อ่อน*/
+}
+@media (prefers-reduced-motion: reduce) {
+	.slides .slide, .slide-dots span {
+		animation: none;
+	}
+	.slides .slide:first-child {
+		opacity: 1;
+	}
+}
